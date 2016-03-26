@@ -1,6 +1,15 @@
 {
   "name": "client",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shahzadthathal/mean-app-client.git"
+  },
+  "author": "Muhammad Shahzad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shahzadthathal/mean-app-client/issues"
+  },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "grunt": "^0.4.5",
