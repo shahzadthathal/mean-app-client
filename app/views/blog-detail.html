@@ -1,0 +1,48 @@
+
+
+<div class="col-md-3">
+    <p class="lead">{{shopName}}</p>
+     <div blog-category-directive></div>
+</div>
+
+<div class="col-md-9">
+
+<div class="media">
+  <div class="media-left media-top">
+    <a href="#/blog-detail/{{blogDetail.slug}}">
+      <img class="media-object" src="{{imageUrl}}{{blogDetail.image}}" alt="{{blogDetail.title}}" width="320" height="150">    
+    </a>
+  </div>
+  <div class="media-body">
+    <h1 class="media-heading"><a href="#/blog-detail/{{blogDetail.slug}}">{{blogDetail.title}}</a></h1>
+    <p>
+    <div class="media-body-label-left">New!</div>
+    </p>
+    <small>By: Shahzad on 26/3/2016</small>
+    <h2>{{blogDetail.description}}</h2>
+    <div ng-repeat="tag in blogDetail.tags">
+    <span class="label label-success"><a href="#/tag/{{tag}}">{{tag}}</a></span>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4"  ng-repeat='blog in blogs'>
+    <div class="thumbnail">
+      <a href="#/blog-detail/{{blog.slug}}">  
+      <img src="{{imageUrl}}{{blog.image}}" alt="{{blog.title}}" height="130">
+      </a>
+      <div class="caption">
+        <h1><a href="#/blog-detail/{{blog.slug}}">{{blog.title}}</a></h1>
+        <small>By: Shahzad on 26/3/2016</small>
+        <p>{{blog.description | limitTo:30}}...</p>
+      </div>    
+    </div>
+  </div>
+</div>
+
+</div>
+
+
