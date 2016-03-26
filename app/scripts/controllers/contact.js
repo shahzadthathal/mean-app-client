@@ -8,7 +8,12 @@
  * Controller of the clientApp
  */
 
- clientApp.controller('ContactCtrl', ['$scope', '$http', 'AppConfig', 'usSpinnerService' ,  function ($scope, $http, AppConfig, usSpinnerService) {
+ clientApp.controller('ContactCtrl', ['$scope', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService',  function ($scope, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
+    
+    $scope.shopName = AppConfig.APP_NAME;
+    $rootScope.metaservice = MetaService;
+    $rootScope.metaservice.set($scope.shopName+"| Contact","desc 123","blah blah");
+
     $scope.result = 'hidden'
     $scope.resultMessage;
     $scope.formData; //formData is an object holding the name, email, subject, and message

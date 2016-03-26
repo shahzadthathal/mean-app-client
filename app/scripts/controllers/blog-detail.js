@@ -7,11 +7,12 @@
  * # BlogDetailCtrl
  * Controller of the clientApp
  */
-var BlogDetailCtrl =   clientApp.controller('BlogDetailCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', function ($scope, $route, $http, AppConfig, usSpinnerService) {
+var BlogDetailCtrl =   clientApp.controller('BlogDetailCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
 
 	usSpinnerService.spin('spinner-1');
-
-	$scope.shopName = AppConfig.APP_NAME;
+  $scope.shopName = AppConfig.APP_NAME;
+  $rootScope.metaservice = MetaService;
+  
 	$scope.blogDetail = {};
 	$scope.blogs = [];
 	$scope.blogcats = [];
@@ -21,6 +22,7 @@ var BlogDetailCtrl =   clientApp.controller('BlogDetailCtrl', ['$scope', '$route
 	$http.get(AppConfig.SERVERURL + '/api/blog/detail/'+ bslug)
             .then(function(result){
                 $scope.blogDetail = result.data;
+                $rootScope.metaservice.set($scope.shopName+"|"+$scope.blogDetail.title,"desc 123","blah blah");
      });
 
 

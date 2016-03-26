@@ -9,11 +9,12 @@
  */
 
 
-var BlogCategoryCtrl =   clientApp.controller('BlogCategoryCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', function ($scope, $route, $http, AppConfig, usSpinnerService) {
+var BlogCategoryCtrl =   clientApp.controller('BlogCategoryCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
  
   usSpinnerService.spin('spinner-1');
-
   $scope.shopName = AppConfig.APP_NAME;
+  $rootScope.metaservice = MetaService;
+  
   $scope.categoryDetail = {};
   $scope.blogs = [];
   $scope.blogcats = [];
@@ -24,6 +25,8 @@ var BlogCategoryCtrl =   clientApp.controller('BlogCategoryCtrl', ['$scope', '$r
 	$http.get(AppConfig.SERVERURL + '/api/blog-category/detail/'+ bcslug)
               .then(function(result){
                 $scope.categoryDetail = result.data;
+                $rootScope.metaservice.set("Blog | "+ $scope.categoryDetail.title,"desc 123","blah blah");
+
     });
 
 	$http.get(AppConfig.SERVERURL + '/api/blog/listbycatslug/'+ bcslug)

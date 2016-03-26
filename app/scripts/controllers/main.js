@@ -12,12 +12,12 @@
 var MainCtrl =   clientApp.controller('MainCtrl', ['$scope', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
 
     usSpinnerService.spin('spinner-1');
+    $scope.shopName = AppConfig.APP_NAME;
 
     $rootScope.metaservice = MetaService;
-    $rootScope.metaservice.set("Test 1223","desc 123","blah blah");
+    $rootScope.metaservice.set($scope.shopName+"|Products","Product description","products,webshop");
 
-    
-    $scope.shopName = AppConfig.APP_NAME;
+
     $scope.products = [];
     $scope.productcats = [];    
     $scope.imageUrl = AppConfig.SERVERURL+'/images/';

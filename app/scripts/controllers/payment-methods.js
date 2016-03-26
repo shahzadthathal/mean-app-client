@@ -7,10 +7,14 @@
  * # PaymentMethodCtrl
  * Controller of the clientApp
  */
-var PaymentMethodCtrl =   clientApp.controller('PaymentMethodCtrl', ['$scope', '$sce', '$route', '$http', 'AppConfig', 'usSpinnerService', function ($scope, $sce, $route, $http, AppConfig, usSpinnerService) {
+var PaymentMethodCtrl =   clientApp.controller('PaymentMethodCtrl', ['$scope', '$sce', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $sce, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
     
     usSpinnerService.spin('spinner-1');
     $scope.shopName = AppConfig.APP_NAME;
+    
+    $rootScope.metaservice = MetaService;
+    $rootScope.metaservice.set($scope.shopName+"|Payment Methods","Product description","products,webshop");
+    
     $scope.pageData = {};
     $scope.productcats = [];
 

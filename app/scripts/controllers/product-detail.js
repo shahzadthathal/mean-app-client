@@ -10,13 +10,11 @@
 var ProductDetailCtrl =   clientApp.controller('ProductDetailCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
 
 	usSpinnerService.spin('spinner-1');
-
+  $scope.shopName = AppConfig.APP_NAME;
+  $scope.productDetail = {};
   $rootScope.metaservice = MetaService;
-  $rootScope.metaservice.set("Test 1223","desc 123","blah blah");
-
-
-	$scope.shopName = AppConfig.APP_NAME;
-	$scope.productDetail = {};
+  
+	
 	$scope.products = [];
 	$scope.productcats = [];
    $scope.imageUrl = AppConfig.SERVERURL+'/images/';
@@ -26,7 +24,10 @@ var ProductDetailCtrl =   clientApp.controller('ProductDetailCtrl', ['$scope', '
 	$http.get(AppConfig.SERVERURL + '/api/product/detail/'+ pslug)
             .then(function(result){
                 $scope.productDetail = result.data;
+                $rootScope.metaservice.set("Products | "+ $scope.productDetail.title,"desc 123","blah blah");
      });
+
+  
 
 
 	$http.get(AppConfig.SERVERURL + '/api/product/list')

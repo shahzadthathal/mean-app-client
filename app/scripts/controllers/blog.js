@@ -9,11 +9,13 @@
  */
 
   
-var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', function ($scope, $route, $http, AppConfig, usSpinnerService) {
+var BlogCtrl =   clientApp.controller('BlogCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
 
     usSpinnerService.spin('spinner-1');
-    
     $scope.shopName = AppConfig.APP_NAME;
+    $rootScope.metaservice = MetaService;
+    $rootScope.metaservice.set($scope.shopName+"| Blog","desc 123","blah blah");
+
     $scope.blogs = [];
     $scope.blogcats = [];
 	$scope.products = [];

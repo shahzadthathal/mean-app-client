@@ -9,9 +9,11 @@
  */
 
 
-var TagCtrl =   clientApp.controller('TagCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', function ($scope, $route, $http, AppConfig, usSpinnerService) {
+var TagCtrl =   clientApp.controller('TagCtrl', ['$scope', '$route', '$http', 'AppConfig', 'usSpinnerService', '$rootScope', 'MetaService', function ($scope, $route, $http, AppConfig, usSpinnerService, $rootScope, MetaService) {
  
   usSpinnerService.spin('spinner-1');
+  $scope.shopName = AppConfig.APP_NAME;
+  $rootScope.metaservice = MetaService;
 
   $scope.tagDetail = {};
 	$scope.products = [];
@@ -24,6 +26,8 @@ var TagCtrl =   clientApp.controller('TagCtrl', ['$scope', '$route', '$http', 'A
 	 $http.get(AppConfig.SERVERURL + '/api/tag/detail/'+ tslug)
               .then(function(result){
                 $scope.tagDetail = result.data;
+          $rootScope.metaservice.set("Tags | "+ $scope.tagDetail.title,"desc 123","blah blah");
+                
     });
 
 
