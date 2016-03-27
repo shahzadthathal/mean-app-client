@@ -18,7 +18,8 @@
     <div class="media-body-label-left">{{productDetail.sale_price | currency}}</div>
     <div class="media-body-label-right">{{productDetail.general_price | currency}}</div>
     </p>
-    <h2>{{productDetail.description}}</h2>
+    <!-- <h2>{{productDetail.description}}</h2> -->
+    <p ng-bind-html="productDetail.description | cleanHTML"></p>
     <div ng-repeat="tag in productDetail.tags">
     <span class="label label-success"><a href="#/tag/{{tag}}">{{tag}}</a></span>
     </div>
