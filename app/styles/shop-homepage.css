@@ -63,6 +63,12 @@ body {
     text-decoration:line-through #000;
 }
 
+
+.custom-caption{ position: absolute; background-color:#eea236;  top:130px; left:170px;  width:auto; height:auto; padding: 10px; font-size:14px; font-weight: 700;
+    -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;-webkit-box-shadow: 0 0 5px #ADADAD;  -moz-box-shadow: 0 0 5px #ADADAD;
+  box-shadow: 0 0 5px #ADADAD; text-align: center; color: #cf1919;} 
+
+
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
@@ -79,12 +85,8 @@ body {
 }
 
 footer {
-   
-	height:150px;
-	background: none repeat scroll 0 0 #2A323A;
-	padding: 25px 0;
+    margin: 50px;
     text-align: center;
-	color:#fff;
 }
 
 

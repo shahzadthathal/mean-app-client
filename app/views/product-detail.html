@@ -18,7 +18,6 @@
     <div class="media-body-label-left">{{productDetail.sale_price | currency}}</div>
     <div class="media-body-label-right">{{productDetail.general_price | currency}}</div>
     </p>
-    <!-- <h2>{{productDetail.description}}</h2> -->
     <p ng-bind-html="productDetail.description | cleanHTML"></p>
     <div ng-repeat="tag in productDetail.tags">
     <span class="label label-success"><a href="#/tag/{{tag}}">{{tag}}</a></span>
@@ -33,12 +32,13 @@
     <div class="thumbnail">
       <a href="#/product-detail/{{product.slug}}">  
       <img src="{{imageUrl}}{{product.image}}" alt="{{product.title}}" height="130">
-      <div class="block-label-left">{{product.sale_price | currency}}</div>
-      <div class="block-label-right">{{product.general_price | currency}}</div>
+      <div ng-if="product.sale_price" class="block-label-left">{{product.sale_price | currency}}</div>
+      <div ng-if="product.general_price" class="block-label-right">{{product.general_price | currency}}</div>
       </a>
       <div class="caption">
+        <div ng-if="product.caption" class="custom-caption">{{product.caption}}</div>
         <h1><a href="#/product-detail/{{product.slug}}">{{product.title}}</a></h1>
-        <p>{{product.description | limitTo:100}}...</p>
+        <p>{{product.short_description}}...</p>
       </div>    
     </div>
   </div>

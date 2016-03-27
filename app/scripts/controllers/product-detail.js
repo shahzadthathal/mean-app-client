@@ -33,6 +33,10 @@ var ProductDetailCtrl =   clientApp.controller('ProductDetailCtrl', ['$scope', '
 	$http.get(AppConfig.SERVERURL + '/api/product/list')
       .then(function (result) {
         $scope.products =  result.data;
+        var removeIndex = $scope.products.indexOf($scope.productDetail);
+        console.log(removeIndex);
+        $scope.products.splice(removeIndex,1);
+
     });
 
     $http.get(AppConfig.SERVERURL + '/api/product-category/list')
